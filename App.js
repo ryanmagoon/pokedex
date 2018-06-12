@@ -1,8 +1,14 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from 'react-apollo'
 import { Ionicons } from '@expo/vector-icons';
 import RootNavigation from './navigation/RootNavigation';
+
+const client = new ApolloClient({
+  uri: 'https://graphql-pokemon.now.sh/graphql'
+})
 
 export default class App extends React.Component {
   state = {
