@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform, StatusBar, StyleSheet, View } from 'react-native'
+import { Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native'
 import { AppLoading, Asset, Font } from 'expo'
 import ApolloClient, { gql } from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
@@ -27,10 +27,10 @@ export default class App extends React.Component {
     } else {
       return (
         <ApolloProvider client={client}>
-          <View style={styles.container}>
+          <SafeAreaView style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <RootNavigation />
-          </View>
+          </SafeAreaView>
         </ApolloProvider>
       )
     }
@@ -68,6 +68,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#dc0b2d'
   }
 })
