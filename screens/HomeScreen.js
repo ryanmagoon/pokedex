@@ -22,7 +22,7 @@ export default class HomeScreen extends React.Component {
       <SafeAreaView style={styles.container}>
         <View style={styles.contentContainer}>
           <Image
-            source={require('../assets/images/Pokémon_logo.png')}
+            source={require('../assets/images/pokemon_logo.png')}
             style={styles.welcomeImage}
           />
 
