@@ -6,8 +6,12 @@ import { ApolloProvider } from 'react-apollo'
 import { Ionicons } from '@expo/vector-icons'
 import RootNavigation from './navigation/RootNavigation'
 
+// const client = new ApolloClient({
+//   uri: 'https://graphql-pokemon.now.sh/graphql'
+// })
+
 const client = new ApolloClient({
-  uri: 'https://graphql-pokemon.now.sh/graphql'
+  uri: 'https://graphql-pokemon-nekeimajbp.now.sh'
 })
 
 export default class App extends React.Component {
