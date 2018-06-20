@@ -1,21 +1,41 @@
-import React from 'react'
-import { ScrollView, StyleSheet } from 'react-native'
-import { ExpoLinksView } from '@expo/samples'
+import React, { Component, Fragment } from 'react'
+import { ScrollView, StyleSheet, Text } from 'react-native'
+import { Query } from 'react-apollo'
+import { gql } from 'apollo-boost'
+import { lighten } from '../node_modules/polished'
 
-export default class LinksScreen extends React.Component {
+const getPokemons = gql`
+  {
+    pokemons(first: 151) {
+      name
+      id
+    }
+  }
+`
+
+export default class LinksScreen extends Component {
   static navigationOptions = {
     title: 'Links'
   }
 
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <ExpoLinksView />
-      </ScrollView>
-    )
-  }
+  render = () => (
+    <Query query={getPokemons}>
+      {({ loading, error, data: { pokemons } }) => {
+        if (loading) return 'Loading...'
+        if (error) return `Error! ${error.message}`
+
+        return (
+          <Fragment>
+            {pokemons.map(({ name, id }) => <Text>{name}</Text>)}
+          </Fragment>
+        )
+      }}
+    </Query>
+  )
+
+  // render() {
+  //   return <ScrollView style={styles.container} />
+  // }
 }
 
 const styles = StyleSheet.create({
