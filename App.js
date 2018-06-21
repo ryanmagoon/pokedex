@@ -1,7 +1,7 @@
 import React from 'react'
 import { Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native'
-import { AppLoading, Asset, Font } from 'expo'
-import ApolloClient, { gql } from 'apollo-boost'
+import { AppLoading, Asset, Audio, Font } from 'expo'
+import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import RootNavigation from './navigation/RootNavigation'
@@ -37,6 +37,16 @@ export default class App extends React.Component {
   }
 
   _loadResourcesAsync = async () => {
+    // const soundObject = new Expo.Audio.Sound()
+    // try {
+    //   await soundObject.loadAsync(require('./assets/sounds/opening.mp3'))
+    //   await soundObject.stopAsync()
+    //   await soundObject.playAsync()
+    //   // Your sound is playing!
+    // } catch (error) {
+    //   // An error occurred!
+    // }
+
     return Promise.all([
       Asset.loadAsync([
         require('./assets/images/robot-dev.png'),
