@@ -1,17 +1,23 @@
 import React, { Component, Fragment } from 'react'
-import { ScrollView, StyleSheet, Text } from 'react-native'
+import { Dimensions, Image, ScrollView, StyleSheet } from 'react-native'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
-import { lighten } from '../node_modules/polished'
+import { Card, CardItem, Text, Body } from 'native-base'
+
+const screenWidth = Dimensions.get('window').width
 
 const getPokemons = gql`
   {
     pokemons(first: 151) {
       name
+      number
       id
+      image
     }
   }
 `
+
+const cardStyle = { margin: 15, height: 320, width: 280 }
 
 export default class LinksScreen extends Component {
   static navigationOptions = {
@@ -21,21 +27,38 @@ export default class LinksScreen extends Component {
   render = () => (
     <Query query={getPokemons}>
       {({ loading, error, data: { pokemons } }) => {
-        if (loading) return 'Loading...'
+        if (loading) return <Text>Loading...</Text>
         if (error) return `Error! ${error.message}`
 
         return (
-          <Fragment>
-            {pokemons.map(({ name, id }) => <Text>{name}</Text>)}
-          </Fragment>
+          <ScrollView style={{ flex: 1 }}>
+            {pokemons.map(({ name, number, image }, i) => (
+              <Card key={i}>
+                <CardItem header>
+                  <Text>{number}</Text>
+                </CardItem>
+                <CardItem>
+                  <Body>
+                    <Image
+                      source={{ uri: image }}
+                      style={{
+                        resizeMode: 'contain',
+                        height: 0.55 * screenWidth,
+                        width: 0.95 * screenWidth
+                      }}
+                    />
+                  </Body>
+                </CardItem>
+                <CardItem footer>
+                  <Text>{name}</Text>
+                </CardItem>
+              </Card>
+            ))}
+          </ScrollView>
         )
       }}
     </Query>
   )
-
-  // render() {
-  //   return <ScrollView style={styles.container} />
-  // }
 }
 
 const styles = StyleSheet.create({
