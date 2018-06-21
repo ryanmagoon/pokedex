@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import { Button } from 'native-base'
 
