@@ -21,7 +21,6 @@ const cardStyle = { margin: 15, height: 320, width: 280 }
 
 export default class LinksScreen extends Component {
   static navigationOptions = {
-    title: 'Links',
     header: null
   }
 
@@ -54,12 +53,25 @@ export default class LinksScreen extends Component {
               flex: 1
             }}
           >
-            {pokemons.map(({ name, number, image }, i) => (
+            {pokemons.map(({ name, number, image, id }, i) => (
               <Card key={i} style={{ width: '90%' }}>
-                <CardItem header>
+                <CardItem
+                  header
+                  button
+                  onPress={() => {
+                    console.log('name', 'pressed')
+                    this.props.navigation.navigate('Details', { id })
+                  }}
+                >
                   <Text style={styles.text}>{number}</Text>
                 </CardItem>
-                <CardItem>
+                <CardItem
+                  button
+                  onPress={() => {
+                    console.log('name', 'pressed')
+                    this.props.navigation.navigate('Details', { id })
+                  }}
+                >
                   <Body>
                     <Image
                       source={{ uri: image }}
@@ -71,7 +83,14 @@ export default class LinksScreen extends Component {
                     />
                   </Body>
                 </CardItem>
-                <CardItem footer>
+                <CardItem
+                  footer
+                  button
+                  onPress={() => {
+                    console.log('name', 'pressed')
+                    this.props.navigation.navigate('Details', { id })
+                  }}
+                >
                   <Text style={styles.text}>{name}</Text>
                 </CardItem>
               </Card>
