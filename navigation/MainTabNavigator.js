@@ -35,38 +35,10 @@ const LinksStack = createStackNavigator({
 
 LinksStack.navigationOptions = {
   tabBarLabel: 'List',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-link${focused ? '' : '-outline'}`
-          : 'md-link'
-      }
-    />
-  )
-}
-
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen
-})
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-options${focused ? '' : '-outline'}`
-          : 'md-options'
-      }
-    />
-  )
+  tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="pokeball" />
 }
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack
+  LinksStack
 })
