@@ -12,6 +12,7 @@
     "apollo-boost": "^0.1.7",
     "expo": "^27.0.1",
     "graphql": "^0.13.2",
+    "native-base": "^2.5.2",
     "polished": "^1.9.2",
     "react": "16.3.1",
     "react-apollo": "^2.1.4",
