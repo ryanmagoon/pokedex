@@ -3,15 +3,11 @@ import { Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native'
 import { AppLoading, Asset, Font } from 'expo'
 import ApolloClient, { gql } from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
-import { Ionicons } from '@expo/vector-icons'
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import RootNavigation from './navigation/RootNavigation'
 
-// const client = new ApolloClient({
-//   uri: 'https://graphql-pokemon.now.sh/graphql'
-// })
-
 const client = new ApolloClient({
-  uri: 'https://graphql-pokemon-nekeimajbp.now.sh'
+  uri: 'https://graphql-pokemon.now.sh/graphql'
 })
 
 export default class App extends React.Component {
@@ -50,6 +46,7 @@ export default class App extends React.Component {
       Font.loadAsync({
         // This is the font that we are using for our tab bar
         ...Ionicons.font,
+        ...MaterialCommunityIcons.font,
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
