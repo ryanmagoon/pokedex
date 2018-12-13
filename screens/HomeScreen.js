@@ -18,7 +18,7 @@ export default class HomeScreen extends React.Component {
             source={require('../assets/images/pokemon_logo.png')}
             style={styles.welcomeImage}
           />
-          <Text style={styles.text}>Bootleg Pokédex</Text>
+          <Text style={styles.text}>Legitimate Pokédex</Text>
           <Image
             source={require('../assets/images/pikachu.gif')}
             style={styles.pikachu}
