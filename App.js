@@ -82,3 +82,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#dc0b2d'
   }
 })
+
+// this is a comment to test the upload process some more stuff
